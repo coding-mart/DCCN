@@ -1,3 +1,2 @@
-# test
-this is test repo
-test done
+# c language
+we write here c programmes
