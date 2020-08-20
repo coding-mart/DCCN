@@ -1,0 +1,36 @@
+Understand IP Addresses
+An IP address is an address used in order to uniquely identify a device on an IP network. The address is made up of 32 binary bits, which can be divisible into a network portion and host portion with the help of a subnet mask. The 32 binary bits are broken into four octets (1 octet = 8 bits). Each octet is converted to decimal and separated by a period (dot). For this reason, an IP address is said to be expressed in dotted decimal format (for example, 172.16.81.100). The value in each octet ranges from 0 to 255 decimal, or 00000000 - 11111111 binary.
+
+Here is how binary octets convert to decimal: The right most bit, or least significant bit, of an octet holds a value of 20. The bit just to the left of that holds a value of 21. This continues until the left-most bit, or most significant bit, which holds a value of 27. So if all binary bits are a one, the decimal equivalent would be 255 as shown here:
+
+    1  1  1  1 1 1 1 1
+  128 64 32 16 8 4 2 1 (128+64+32+16+8+4+2+1=255)
+Here is a sample octet conversion when not all of the bits are set to 1.
+
+  0  1 0 0 0 0 0 1
+  0 64 0 0 0 0 0 1 (0+64+0+0+0+0+0+1=65)
+And this sample shows an IP address represented in both binary and decimal.
+
+        10.       1.      23.      19 (decimal)
+  00001010.00000001.00010111.00010011 (binary)
+These octets are broken down to provide an addressing scheme that can accommodate large and small networks. There are five different classes of networks, A to E. This document focuses on classes A to C, since classes D and E are reserved and discussion of them is beyond the scope of this document.
+
+Network Masks
+A network mask helps you know which portion of the address identifies the network and which portion of the address identifies the node. Class A, B, and C networks have default masks, also known as natural masks, as shown here:
+
+Class A: 255.0.0.0
+Class B: 255.255.0.0
+Class C: 255.255.255.0
+An IP address on a Class A network that has not been subnetted would have an address/mask pair similar to: 8.20.15.1 255.0.0.0. In order to see how the mask helps you identify the network and node parts of the address, convert the address and mask to binary numbers.
+
+8.20.15.1 = 00001000.00010100.00001111.00000001
+255.0.0.0 = 11111111.00000000.00000000.00000000
+Once you have the address and the mask represented in binary, then identification of the network and host ID is easier. Any address bits which have corresponding mask bits set to 1 represent the network ID. Any address bits that have corresponding mask bits set to 0 represent the node ID.
+
+8.20.15.1 = 00001000.00010100.00001111.00000001
+255.0.0.0 = 11111111.00000000.00000000.00000000
+            -----------------------------------
+             net id |      host id             
+
+netid =  00001000 = 8
+hostid = 00010100.00001111.00000001 = 20.15.1
